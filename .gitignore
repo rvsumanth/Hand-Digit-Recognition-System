@@ -96,5 +96,5 @@ ehthumbs.db
 # Project specific (add your own patterns here)
 # data/
 # models/
-models/*.h5
+models/
 # downloads/
