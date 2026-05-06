@@ -17,10 +17,10 @@ class DigitRecognizer(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Handwritten Digit Recognizer")
-        self.geometry("900x800")   # 🔥 Bigger window
+        self.geometry("900x600")  
         self.resizable(False, False)
 
-        # Canvas for drawing (bigger now)
+       
         self.canvas = tk.Canvas(self, width=400, height=400, bg="black", cursor="dot")
         self.canvas.pack(side=tk.LEFT, padx=20, pady=20)
         self.canvas.bind("<B1-Motion>", self.draw_digit)
@@ -45,7 +45,7 @@ class DigitRecognizer(tk.Tk):
         self.clear_button.pack(side=tk.RIGHT, padx=10)
 
         # Graph placeholder (bigger)
-        self.fig, self.ax = plt.subplots(figsize=(6, 4))  # 🔥 larger plot
+        self.fig, self.ax = plt.subplots(figsize=(6, 4))  
         self.ax.set_title("Prediction Probabilities", fontsize=14)
         self.ax.set_xlabel("Digits", fontsize=12)
         self.ax.set_ylabel("Probability", fontsize=12)
@@ -71,7 +71,7 @@ class DigitRecognizer(tk.Tk):
         self.canvas.delete("all")
         self.lastx, self.lasty = None, None
         self.label.config(text="Draw a digit (0-9)")
-        # Reset graph
+        
         for bar in self.bar_container:
             bar.set_height(0)
         self.canvas_graph.draw()
@@ -85,7 +85,7 @@ class DigitRecognizer(tk.Tk):
         
         image = ImageGrab.grab(bbox=(x, y, x1, y1))
 
-        # Preprocess image (unchanged)
+        # Preprocess image 
         image = image.resize((28, 28)).convert('L')
         img_array = np.array(image).astype('float32') / 255.0
         img_array = img_array.reshape(1, 28, 28, 1)
@@ -99,7 +99,7 @@ class DigitRecognizer(tk.Tk):
         # Update graph
         for bar, p in zip(self.bar_container, prediction[0]):
             bar.set_height(p)
-        self.ax.set_ylim(0, 1)  # probabilities between 0–1
+        self.ax.set_ylim(0, 1)  
         self.canvas_graph.draw()
 
 

@@ -19,7 +19,7 @@ num_classes = 10
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 
-# Build an improved CNN model
+# Build an CNN model
 model = models.Sequential([
     layers.Conv2D(32, (3,3), activation='relu', input_shape=(28,28,1)),
     layers.BatchNormalization(),
@@ -73,6 +73,6 @@ model.fit(datagen.flow(x_train, y_train, batch_size=428),
 loss, accuracy = model.evaluate(x_test, y_test, verbose=0)
 print(f"Test Accuracy: {accuracy * 100:.2f}%")
 
-# Save final trained model
+# Save final trained model2
 model.save('mnist_cnn_model.h5')
 print("Model saved as 'mnist_cnn_model.h5'")
